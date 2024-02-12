@@ -460,6 +460,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "bytes32[]",
+						"name": "shares",
+						"type": "bytes32[]"
+					}
+				],
+				"name": "combineKeyshares",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "ticker",
 						"type": "string"
@@ -496,6 +515,19 @@
 				"name": "deposit",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "depositId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -615,11 +647,6 @@
 								"internalType": "uint256",
 								"name": "timeOfTransaction",
 								"type": "uint256"
-							},
-							{
-								"internalType": "address[]",
-								"name": "approvers",
-								"type": "address[]"
 							}
 						],
 						"internalType": "struct MultiSigTA.Transfer[]",
@@ -662,6 +689,58 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "limit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "locked",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mainOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "multisigIntance",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -685,13 +764,31 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "threshold",
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "keyshare",
+						"type": "bytes32"
+					}
+				],
+				"name": "splitKeyshare",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "x",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "y",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct MultiSigTA.MultiSigTAPoint[]",
 						"name": "",
-						"type": "uint256"
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -717,10 +814,81 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenList",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "transferId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "updateKeyshares",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "walletowners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawalId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -756,7 +924,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/TSSWallet.sol": "MultiSigTA"
+			"contracts/Multisig.sol": "MultiSigTA"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -770,52 +938,28 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/utils/Arrays.sol": {
-			"keccak256": "0x8806d620b6571932b662cfd48fbd518d4f70df1f88a23b5724cacde64a77bda1",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://8043304c8f9e1c1dc4a41935efa067daa77ad7abbae1fda41f015d53fbf327a5",
-				"dweb:/ipfs/QmTrF2hSkRZoN9EEu8zdEhBpGNZ7RxzCdXf9ydzc2HQ3tM"
-			]
-		},
-		"@openzeppelin/contracts/utils/StorageSlot.sol": {
-			"keccak256": "0x32ba59b4b7299237c8ba56319110989d7978a039faf754793064e967e5894418",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://1ae50c8b562427df610cc4540c9bf104acca7ef8e2dcae567ae7e52272281e9c",
-				"dweb:/ipfs/QmTHiadFCSJUPpRjNegc5SahmeU8bAoY8i9Aq6tVscbcKR"
-			]
-		},
-		"@openzeppelin/contracts/utils/math/Math.sol": {
-			"keccak256": "0x005ec64c6313f0555d59e278f9a7a5ab2db5bdc72a027f255a37c327af1ec02d",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://4ece9f0b9c8daca08c76b6b5405a6446b6f73b3a15fab7ff56e296cbd4a2c875",
-				"dweb:/ipfs/QmQyRpyPRL5SQuAgj6SHmbir3foX65FJjbVTTQrA2EFg6L"
-			]
-		},
-		"@openzeppelin/contracts/utils/math/SafeMath.sol": {
-			"keccak256": "0x58b21219689909c4f8339af00813760337f7e2e7f169a97fe49e2896dcfb3b9a",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://ef8e012e946dec20e59f2d4446f4b44bb098f3fa8bac103b1b5112fff777447b",
-				"dweb:/ipfs/QmVTooKWcLkJ9W68yNX4MgdrbAKiAXwuRN9A7f4NkdcdtQ"
-			]
-		},
 		"contracts/MultiSigFactory.sol": {
-			"keccak256": "0x706696ee95cc2e56b17b40bab765b57627ef58c9806d2c99a5be54989b952633",
+			"keccak256": "0x9d0c141b27c1bcb0b58efb167d8901c4ad8eeada985be1d494a3b0779c0b4934",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e5cf506989dd268da726ede78b253bdc837968c99c33d5261d7a5d4fb546753a",
-				"dweb:/ipfs/QmPvaNntJxAfEyGrfuDGDf1aTkhDmvMXhdcm5XykgYTJTT"
+				"bzz-raw://37c7afc4a0974d943cd703a3eedd578d674d90bae5a7077a806e1dcf5afa5ba5",
+				"dweb:/ipfs/QmR1tgtdyNxjKHzaqmkeCBK2KyVVEfPKak4ZTkojkhzFQH"
 			]
 		},
-		"contracts/TSSWallet.sol": {
-			"keccak256": "0x82fde6f815914189f72d6cbc92ab3157ccec318c26d66fb9c349a5d18c29bdf2",
+		"contracts/Multisig.sol": {
+			"keccak256": "0x88656e8f67ee3a90912c612c31475a2b986057438e58e45718bdc37edb547431",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://4318499d29a58b96c04ca8c8dc94268d8e0f5fa82013ea1ded75103788b13d7d",
-				"dweb:/ipfs/QmWSEmiZHuBVnKKsvcQJcfw1qU5EQ9emwjPeSVDk1ktCx9"
+				"bzz-raw://4f9b1108f609880e74898b98bd737402240de77a5623bacdf5733881d707a7a0",
+				"dweb:/ipfs/QmXY2mRw6fiVSs3cc4kwKUsutUF7p9dv4bEzmwwi9PHmrG"
+			]
+		},
+		"contracts/ShamirSecretSharing.sol": {
+			"keccak256": "0x5bf21720c71682e78b4bc6a5df36cb579009f588564dffe7a0ac74dae07e8ac6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3b0270f0593c801ed3e0d14aea1cf3e18ffe4698ed36a9ef5c1ba20203efcd7b",
+				"dweb:/ipfs/QmRH5yDn9FQtG1etQ13hBQGSBevGZSWYV2xowXiTUHL5ZD"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/token/ERC20/ERC20.sol": {
