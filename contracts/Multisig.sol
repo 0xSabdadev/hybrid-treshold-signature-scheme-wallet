@@ -7,7 +7,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contr
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/utils/cryptography/ECDSA.sol";
 import "./MultiSigFactory.sol";
 
-contract MultiSigTA {
+contract ThresholdSignature {
     using ECDSA for bytes32; // Using ECDSA library for bytes32 type
 
     address[] public walletOwners;

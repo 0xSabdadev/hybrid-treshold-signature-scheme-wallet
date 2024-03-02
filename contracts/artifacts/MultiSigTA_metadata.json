@@ -405,6 +405,30 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "approvals",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "ticker",
 						"type": "string"
@@ -413,11 +437,40 @@
 						"internalType": "uint256",
 						"name": "id",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
 					}
 				],
 				"name": "approveTransferRequest",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "balance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -460,25 +513,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "bytes32[]",
-						"name": "shares",
-						"type": "bytes32[]"
-					}
-				],
-				"name": "combineKeyshares",
-				"outputs": [
-					{
-						"internalType": "bytes32",
-						"name": "",
-						"type": "bytes32"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "string",
 						"name": "ticker",
 						"type": "string"
@@ -492,6 +526,11 @@
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
 					}
 				],
 				"name": "createTransferRequest",
@@ -647,6 +686,11 @@
 								"internalType": "uint256",
 								"name": "timeOfTransaction",
 								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "executed",
+								"type": "bool"
 							}
 						],
 						"internalType": "struct MultiSigTA.Transfer[]",
@@ -671,24 +715,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "ticker",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_amount",
-						"type": "uint256"
-					}
-				],
-				"name": "initiateWithdrawal",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "limit",
 				"outputs": [
@@ -696,45 +722,6 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "locked",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "mainOwner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "multisigIntance",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -761,37 +748,6 @@
 				"name": "removeWalletOwner",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "bytes32",
-						"name": "keyshare",
-						"type": "bytes32"
-					}
-				],
-				"name": "splitKeyshare",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "x",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "y",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct MultiSigTA.MultiSigTAPoint[]",
-						"name": "",
-						"type": "tuple[]"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -833,6 +789,30 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "tokenMapping",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "ticker",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "transferId",
 				"outputs": [
@@ -846,10 +826,57 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "updateKeyshares",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transferRequests",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "ticker",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "address payable",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "approvals",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeOfTransaction",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "executed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -860,7 +887,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "walletowners",
+				"name": "walletOwners",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -872,7 +899,18 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "ticker",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
 				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -900,6 +938,25 @@
 					}
 				],
 				"name": "withdrawalInProcess",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "withdrawing",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -939,27 +996,19 @@
 	},
 	"sources": {
 		"contracts/MultiSigFactory.sol": {
-			"keccak256": "0x9d0c141b27c1bcb0b58efb167d8901c4ad8eeada985be1d494a3b0779c0b4934",
+			"keccak256": "0xbca6388b4eba3d4617efb539cbe068dcda2bb3e75e86df1843ca5512167c88aa",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://37c7afc4a0974d943cd703a3eedd578d674d90bae5a7077a806e1dcf5afa5ba5",
-				"dweb:/ipfs/QmR1tgtdyNxjKHzaqmkeCBK2KyVVEfPKak4ZTkojkhzFQH"
+				"bzz-raw://4122e03009ff88c142cb0437433a29935742c769e44e9e6dc5a2bc484f10cc4c",
+				"dweb:/ipfs/QmaG31GaPxMNobnxCtbwKsgCzDyUBMkNybvYYrFYLrnMBL"
 			]
 		},
 		"contracts/Multisig.sol": {
-			"keccak256": "0x88656e8f67ee3a90912c612c31475a2b986057438e58e45718bdc37edb547431",
+			"keccak256": "0x51b941b1addb36edb47108dfed843d78c8653d48408684d1b435340f0fffd719",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://4f9b1108f609880e74898b98bd737402240de77a5623bacdf5733881d707a7a0",
-				"dweb:/ipfs/QmXY2mRw6fiVSs3cc4kwKUsutUF7p9dv4bEzmwwi9PHmrG"
-			]
-		},
-		"contracts/ShamirSecretSharing.sol": {
-			"keccak256": "0x5bf21720c71682e78b4bc6a5df36cb579009f588564dffe7a0ac74dae07e8ac6",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://3b0270f0593c801ed3e0d14aea1cf3e18ffe4698ed36a9ef5c1ba20203efcd7b",
-				"dweb:/ipfs/QmRH5yDn9FQtG1etQ13hBQGSBevGZSWYV2xowXiTUHL5ZD"
+				"bzz-raw://a489bd92a622918d635f9d18147ceef36e4fbf7ab20424b6ce787d233980c93c",
+				"dweb:/ipfs/QmYXLi54Lrd89dXT3s3bCW6RRUybS3RJJKqY4cNRga5xGB"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/token/ERC20/ERC20.sol": {
@@ -992,6 +1041,38 @@
 			"urls": [
 				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/utils/Strings.sol": {
+			"keccak256": "0x3088eb2868e8d13d89d16670b5f8612c4ab9ff8956272837d8e90106c59c14a0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b81d9ff6559ea5c47fc573e17ece6d9ba5d6839e213e6ebc3b4c5c8fe4199d7f",
+				"dweb:/ipfs/QmPCW1bFisUzJkyjroY3yipwfism9RRCigCcK1hbXtVM8n"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/utils/cryptography/ECDSA.sol": {
+			"keccak256": "0x809bc3edb4bcbef8263fa616c1b60ee0004b50a8a1bfa164d8f57fd31f520c58",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8b93a1e39a4a19eba1600b92c96f435442db88cac91e315c8291547a2a7bcfe2",
+				"dweb:/ipfs/QmTm34KVe6uZBZwq8dZDNWwPcm24qBJdxqL3rPxBJ4LrMv"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/utils/math/Math.sol": {
+			"keccak256": "0xe4455ac1eb7fc497bb7402579e7b4d64d928b846fce7d2b6fde06d366f21c2b3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cc8841b3cd48ad125e2f46323c8bad3aa0e88e399ec62acb9e57efa7e7c8058c",
+				"dweb:/ipfs/QmSqE4mXHA2BXW58deDbXE8MTcsL5JSKNDbm23sVQxRLPS"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/utils/math/SignedMath.sol": {
+			"keccak256": "0xf92515413956f529d95977adc9b0567d583c6203fc31ab1c23824c35187e3ddc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c50fcc459e49a9858b6d8ad5f911295cb7c9ab57567845a250bf0153f84a95c7",
+				"dweb:/ipfs/QmcEW85JRzvDkQggxiBBLVAasXWdkhEysqypj9EaB6H2g6"
 			]
 		}
 	},
